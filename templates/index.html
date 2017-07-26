@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hello</title>
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div>
+    <h1>Hello</h1>
+
+    <p>
+        How are you, {{ first_name }}?
+        {% if first_name.0 is equalto 'J' %}
+            Your name starts with 'J'.
+        {% endif %}
+    </p>
+
+    {% for letter in first_name %}
+        <p>{{ letter }}</p>
+    {% endfor %}
+</div>
+</body>
+</html>
