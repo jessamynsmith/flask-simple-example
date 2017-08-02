@@ -16,7 +16,12 @@ class SqliteConn():
         self.cursor.execute(query, params)
         self.conn.commit()
 
-    def fetchone(self, query, params):
+    def first(self, query, params):
         self.cursor.execute(query, params)
         # Gets a tuple of the fields in the table
         return self.cursor.fetchone()
+
+    def all(self, query, params):
+        self.cursor.execute(query, params)
+        # Gets a tuple of the fields in the table
+        return self.cursor.fetchall()

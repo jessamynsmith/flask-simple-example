@@ -12,16 +12,49 @@
 
     {% if user %}
         <p>
-            How are you, {{ user.0 }}?
+            Info for user {{ user.0 }} {{ user.1 }}
+        </p>
+        <p>
             {% if user.0.0 is equalto 'J' %}
                 Your name starts with 'J'.
             {% endif %}
         </p>
+        <p>
+            {% for letter in user.0 %}
+                {{ letter }}&nbsp;&nbsp;
+            {% endfor %}
+        </p>
 
-        {% for letter in user.0 %}
-            <p>{{ letter }}</p>
-        {% endfor %}
+        <hr>
+        <br>
     {% endif %}
+
+    {% if users %}
+        All Users:<br>
+        <ul>
+        {% for user in users %}
+            <li><a href="/?first_name={{ user.0 }}&last_name={{ user.1 }}">{{ user.0 }} {{ user.1 }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <hr>
+        <br>
+    {% endif %}
+
+    <div>
+        Would you like to add a user?<br>
+        <form method="post" action="/users/add">
+            <label for="first_name">First name:
+                <input type="text" name="first_name" required>
+            </label>
+            <br>
+            <label for="last_name">Last name:
+                <input type="text" name="last_name" required>
+            </label>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
 </body>
 </html>
