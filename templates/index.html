@@ -10,16 +10,18 @@
 <div>
     <h1>Hello</h1>
 
-    <p>
-        How are you, {{ first_name }}?
-        {% if first_name.0 is equalto 'J' %}
-            Your name starts with 'J'.
-        {% endif %}
-    </p>
+    {% if user %}
+        <p>
+            How are you, {{ user.0 }}?
+            {% if user.0.0 is equalto 'J' %}
+                Your name starts with 'J'.
+            {% endif %}
+        </p>
 
-    {% for letter in first_name %}
-        <p>{{ letter }}</p>
-    {% endfor %}
+        {% for letter in user.0 %}
+            <p>{{ letter }}</p>
+        {% endfor %}
+    {% endif %}
 </div>
 </body>
 </html>
